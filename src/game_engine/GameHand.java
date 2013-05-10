@@ -1,42 +1,37 @@
 package game_engine;
 
 public class GameHand {
-
+	
 	private static CardInHand[] gameHand;
 	
-	public GameHand() {
+	private static GameHand instance = new GameHand();
+	
+	private GameHand() {
+		gameHand = new CardInHand[5];
 		gameHand = new CardInHand[5];
 		for (int i=0; i<gameHand.length; i++) {
 			gameHand[i] = new CardInHand();
 		}
 	}
+
+	public static GameHand getGameHandInstance() {
+		return instance;
+	}
 	
-	void setGameHandCard(int position, Card newCard) {
-		if (position<0 || position>4) {
+	public void getPlayingHand(CardInHand[] playingHand) {
+		gameHand = playingHand;
+	}
+	
+	public CardInHand getPlayingCard(int indexInHand) {
+		if (indexInHand<0 || indexInHand>4) {
 			throw new RuntimeException("Error! Card positin must be in range 0-4.");
 		}
-		if (newCard == null) {
-			throw new RuntimeException("Error! newCard cannot be null.");
+		return gameHand[indexInHand];
+	}
+	
+	public void print() {
+		for (int i = 0; i < gameHand.length; i++) {
+			System.out.print(" "+gameHand[i]+"  |  ");
 		}
-		gameHand[position].setCardNumber(newCard.getCardNumber());
-		gameHand[position].setCardSuit(newCard.getCardSuit());
-		gameHand[position].setCardImage(newCard.getCardImage());			
 	}
-	
-	CardInHand getGameHandCard(int position) {
-		if (position<0 || position>4) {
-			throw new RuntimeException("Error! Card positin must be in range 0-4.");
-		}
-		return gameHand[position];
-	}
-	
-	int gameHandLength() {
-		return gameHand.length;
-	}
-	
-//	public void print() {
-//		for (int i = 0; i < gameHandLength(); i++) {
-//			System.out.print(" "+gameHand[i]+"  |  ");
-//		}
-//	}
 }

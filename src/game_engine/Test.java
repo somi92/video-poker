@@ -7,47 +7,22 @@ public class Test {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-//		DeckOfCards deck = DeckOfCards.getDeckInstance();
-//		DeckOfCards shuffeledDeck = DeckOfCards.getShuffeledDeckInstance();
-//		
-//		deck.showDeck();
-//		shuffeledDeck.showDeck();
-//		
-//		TheDealer d = new TheDealer();
-//		GameHand game = TheDealer.drawHand();
-//		game.getGameHandCard(3).setHold(true);
-//		game.getGameHandCard(4).setHold(true);
-//		
-//		game.print();
-//		
-//		GameHand game2 = TheDealer.drawHand(game);
-//		System.out.println();
-//		game2.print();
 		
-		TheDealer.drawFirstHand();
-		TheDealer.print();
-		TheDealer.getCardFromHand(0).setHold(false);
-		TheDealer.getCardFromHand(1).setHold(false);
-		TheDealer.getCardFromHand(2).setHold(false);
-		TheDealer.getCardFromHand(3).setHold(true);
-		TheDealer.getCardFromHand(4).setHold(true);
+		TheDealer d = TheDealer.getTheDealerInstance();
+		GameHand h = GameHand.getGameHandInstance();
+		h.getPlayingHand(d.drawHand());
+		h.print();
 		
+		h.getPlayingCard(0).setHold(true);
+		h.getPlayingCard(1).setHold(true);
+		h.getPlayingCard(2).setHold(false);
+		h.getPlayingCard(3).setHold(true);
+		h.getPlayingCard(4).setHold(true);
+		
+		h.getPlayingHand(d.drawHand(h));
 		System.out.println();
-		
-		TheDealer.drawSecondHand();
-		TheDealer.print();
-		
-		
-		
-//		TheDealer.drawHand();
-//		TheDealer.print();
+		h.print();
 
-//		System.out.println();
-//		System.out.println();
-//		
-//		TheDealer.drawHand();
-//		TheDealer.print();
 	}
 
 }
