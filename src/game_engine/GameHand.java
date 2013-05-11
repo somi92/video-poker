@@ -18,8 +18,12 @@ public class GameHand {
 		return instance;
 	}
 	
-	public void getPlayingHand(CardInHand[] playingHand) {
+	public void setPlayingHand(CardInHand[] playingHand) {
 		gameHand = playingHand;
+	}
+	
+	public CardInHand[] getPlayingHand() {
+		return gameHand;
 	}
 	
 	public CardInHand getPlayingCard(int indexInHand) {
