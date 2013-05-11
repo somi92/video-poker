@@ -115,4 +115,26 @@ class HandEvaluator {
 		}
 		return false;
 	}
+	
+	public boolean isTwoPair(GameHand pHand) {
+		CardInHand[] hand = sortHand(pHand);
+		if (!isFourOfAKind(pHand) && !isThreeOfAKind(pHand) && !isFullHouse(pHand) && 
+				((hand[0].getCardNumber()==hand[1].getCardNumber() && hand[2].getCardNumber()==hand[3].getCardNumber()) 
+				|| (hand[0].getCardNumber()==hand[1].getCardNumber() && hand[3].getCardNumber()==hand[4].getCardNumber())
+				|| (hand[2].getCardNumber()==hand[3].getCardNumber() && hand[3].getCardNumber()==hand[4].getCardNumber()))) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isJacksOrBetter(GameHand pHand) {
+		CardInHand[] hand = sortHand(pHand);
+		for (int i=0; i<4; i++) {
+			if (!isFourOfAKind(pHand) && !isThreeOfAKind(pHand) && !isFullHouse(pHand) && !isTwoPair(pHand) &&
+					hand[i].getCardNumber() == hand[i+1].getCardNumber() && hand[i].getCardNumber()>=11) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

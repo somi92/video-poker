@@ -33,7 +33,7 @@ public class Test {
 		
 		long c = 1;
 //		
-		while(!(e.isFullHouse(h))) {
+		while(!(e.isJacksOrBetter(h))) {
 			h.setPlayingHand(d.drawHand());
 			c++;
 		}
