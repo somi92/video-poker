@@ -24,20 +24,20 @@ class DeckOfCards {
 	    for (int i=1; i<=4; i++) {
 	    	for (int j=1; j<=13; j++) {
 	    		
-	    		CardSuit suit = null;
+	    		CardSuitEnum suit = null;
 	    		
 	    		switch (i) {
 	    		case 1:
-	    			suit = CardSuit.HEARTS;
+	    			suit = CardSuitEnum.HEARTS;
 	    			break;
 	    		case 2: 
-	    			suit = CardSuit.SPADES;
+	    			suit = CardSuitEnum.SPADES;
 	    			break;
 	    		case 3:
-	    			suit = CardSuit.DIAMONDS;
+	    			suit = CardSuitEnum.DIAMONDS;
 	    			break;
 	    		case 4:
-	    			suit = CardSuit.CLUBS;
+	    			suit = CardSuitEnum.CLUBS;
 	    			break;
 	    		}
 	    		

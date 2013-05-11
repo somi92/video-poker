@@ -31,15 +31,17 @@ public class Test {
 //		h.print();
 //		System.out.println();
 		
-		long c = 1;
+//		long c = 1;
 //		
-		while(!(e.isJacksOrBetter(h))) {
-			h.setPlayingHand(d.drawHand());
-			c++;
-		}
+//		while(!(e.isJacksOrBetter(h))) {
+//			h.setPlayingHand(d.drawHand());
+//			c++;
+//		}
 		h.print();
 		System.out.println();
-		System.out.println(c);
+//		System.out.println(c);
+		
+		System.out.println(e.evaluateHand(h));
 	}
 
 }

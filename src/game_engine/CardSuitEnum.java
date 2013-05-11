@@ -1,6 +1,6 @@
 package game_engine;
 
-enum CardSuit {
+enum CardSuitEnum {
 
 	HEARTS, SPADES, DIAMONDS, CLUBS
 }

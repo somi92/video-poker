@@ -3,7 +3,7 @@ package game_engine;
 class HandEvaluator {
 
 //	private CardInHand[] tHand;
-	private CardRank rank;
+//	private CardRank rank;
 	
 	public HandEvaluator() {
 		
@@ -45,6 +45,37 @@ class HandEvaluator {
 			}
 		}
 		return false;
+	}
+	
+	public HandRankEnum evaluateHand(GameHand hand) {
+		if (isRoyalFlush(hand)) {
+			return HandRankEnum.ROYAL_FLUSH;
+		}
+		if (isStraightFlush(hand)) {
+			return HandRankEnum.STRAIGHT_FLUSH;
+		}
+		if (isFourOfAKind(hand)) {
+			return HandRankEnum.FOUR_OF_A_KIND;
+		}
+		if (isFullHouse(hand)) {
+			return HandRankEnum.FULL_HOUSE;
+		}
+		if (isFlush(hand)) {
+			return HandRankEnum.FLUSH;
+		}
+		if (isStraight(hand)) {
+			return HandRankEnum.STRAIGHT;
+		}
+		if (isThreeOfAKind(hand)) {
+			return HandRankEnum.THREE_OF_A_KIND;
+		}
+		if (isTwoPair(hand)) {
+			return HandRankEnum.TWO_PAIR;
+		}
+		if (isJacksOrBetter(hand)) {
+			return HandRankEnum.JACKS_OR_BETTER;
+		}
+		return HandRankEnum.NO_RANK;
 	}
 	
 	/************************** POKER HANDS **************************/
@@ -118,7 +149,7 @@ class HandEvaluator {
 	
 	public boolean isTwoPair(GameHand pHand) {
 		CardInHand[] hand = sortHand(pHand);
-		if (!isFourOfAKind(pHand) && !isThreeOfAKind(pHand) && !isFullHouse(pHand) && 
+		if (/*!isFourOfAKind(pHand) && !isThreeOfAKind(pHand) && !isFullHouse(pHand) &&*/ 
 				((hand[0].getCardNumber()==hand[1].getCardNumber() && hand[2].getCardNumber()==hand[3].getCardNumber()) 
 				|| (hand[0].getCardNumber()==hand[1].getCardNumber() && hand[3].getCardNumber()==hand[4].getCardNumber())
 				|| (hand[2].getCardNumber()==hand[3].getCardNumber() && hand[3].getCardNumber()==hand[4].getCardNumber()))) {
@@ -130,7 +161,7 @@ class HandEvaluator {
 	public boolean isJacksOrBetter(GameHand pHand) {
 		CardInHand[] hand = sortHand(pHand);
 		for (int i=0; i<4; i++) {
-			if (!isFourOfAKind(pHand) && !isThreeOfAKind(pHand) && !isFullHouse(pHand) && !isTwoPair(pHand) &&
+			if (/*!isFourOfAKind(pHand) && !isThreeOfAKind(pHand) && !isFullHouse(pHand) && !isTwoPair(pHand) &&*/
 					hand[i].getCardNumber() == hand[i+1].getCardNumber() && hand[i].getCardNumber()>=11) {
 				return true;
 			}

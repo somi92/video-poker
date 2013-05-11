@@ -5,14 +5,14 @@ import java.awt.Image;
 class Card {
 
 	private int cardNumber;
-	private CardSuit cardSuit;
+	private CardSuitEnum cardSuit;
 	private Image cardImage;
 	
 	public Card() {
 		
 	}
 	
-	public Card(int cardNumber,CardSuit cardSuit,Image cardImage) {
+	public Card(int cardNumber,CardSuitEnum cardSuit,Image cardImage) {
 		setCardNumber(cardNumber);
 		setCardSuit(cardSuit);
 		setCardImage(cardImage);
@@ -30,11 +30,11 @@ class Card {
 		}
 	}
 
-	public CardSuit getCardSuit() {
+	public CardSuitEnum getCardSuit() {
 		return cardSuit;
 	}
 
-	void setCardSuit(CardSuit cardSuit) {
+	void setCardSuit(CardSuitEnum cardSuit) {
 		this.cardSuit = cardSuit;
 	}
 
