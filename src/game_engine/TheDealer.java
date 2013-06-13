@@ -14,8 +14,8 @@ public class TheDealer {
 
 	private TheDealer() {
 		deck = DeckOfCards.getShuffeledDeckInstance();
-		credits = 305;
-		currentBet = 5;
+		credits = 20;
+		currentBet = 3;
 		hand = new CardInHand[5];
 		for (int i=0; i<hand.length; i++) {
 			hand[i] = new CardInHand();
@@ -52,7 +52,7 @@ public class TheDealer {
 	
 	public CardInHand[] drawHand() {
 		setCurrentWin(0);
-		if (credits<0) {
+		if (credits<=0) {
 			throw new RuntimeException("You don't have enough credits.");
 		}
 		if (credits<currentBet && credits>0) {
