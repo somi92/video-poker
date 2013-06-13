@@ -1,5 +1,8 @@
 package game_engine;
 
+import game_engine.hand_ranks.HandRank;
+import game_engine.hand_ranks.HandRankFactory;
+
 class HandEvaluator {
 
 //	private CardInHand[] tHand;
@@ -47,35 +50,35 @@ class HandEvaluator {
 		return false;
 	}
 	
-	public HandRankEnum evaluateHand(GameHand hand) {
+	public HandRank evaluateHand(GameHand hand) {
 		if (isRoyalFlush(hand)) {
-			return HandRankEnum.ROYAL_FLUSH;
+			return HandRankFactory.getHandRank(HandRankEnum.ROYAL_FLUSH);
 		}
 		if (isStraightFlush(hand)) {
-			return HandRankEnum.STRAIGHT_FLUSH;
+			return HandRankFactory.getHandRank(HandRankEnum.STRAIGHT_FLUSH);
 		}
 		if (isFourOfAKind(hand)) {
-			return HandRankEnum.FOUR_OF_A_KIND;
+			return HandRankFactory.getHandRank(HandRankEnum.FOUR_OF_A_KIND);
 		}
 		if (isFullHouse(hand)) {
-			return HandRankEnum.FULL_HOUSE;
+			return HandRankFactory.getHandRank(HandRankEnum.FULL_HOUSE);
 		}
 		if (isFlush(hand)) {
-			return HandRankEnum.FLUSH;
+			return HandRankFactory.getHandRank(HandRankEnum.FLUSH);
 		}
 		if (isStraight(hand)) {
-			return HandRankEnum.STRAIGHT;
+			return HandRankFactory.getHandRank(HandRankEnum.STRAIGHT);
 		}
 		if (isThreeOfAKind(hand)) {
-			return HandRankEnum.THREE_OF_A_KIND;
+			return HandRankFactory.getHandRank(HandRankEnum.THREE_OF_A_KIND);
 		}
 		if (isTwoPair(hand)) {
-			return HandRankEnum.TWO_PAIR;
+			return HandRankFactory.getHandRank(HandRankEnum.TWO_PAIR);
 		}
 		if (isJacksOrBetter(hand)) {
-			return HandRankEnum.JACKS_OR_BETTER;
+			return HandRankFactory.getHandRank(HandRankEnum.JACKS_OR_BETTER);
 		}
-		return HandRankEnum.NO_RANK;
+		return HandRankFactory.getHandRank(HandRankEnum.NO_RANK);
 	}
 	
 	/************************** POKER HANDS **************************/

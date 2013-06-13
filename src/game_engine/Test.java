@@ -1,11 +1,10 @@
 package game_engine;
 
-import java.io.BufferedInputStream;
+import game_engine.hand_ranks.HandRank;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
-import game_engine.hand_ranks.HandRank;
 
 public class Test {
 
@@ -17,46 +16,13 @@ public class Test {
 		
 		TheDealer d = TheDealer.getTheDealerInstance();
 		GameHand h = GameHand.getGameHandInstance();
-//		h.setPlayingHand(d.drawHand());
-//		h.print();
-		
-//		h.getPlayingCard(0).setHold(true);
-//		h.getPlayingCard(1).setHold(true);
-//		h.getPlayingCard(2).setHold(false);
-//		h.getPlayingCard(3).setHold(true);
-//		h.getPlayingCard(4).setHold(true);
-//		
-//		h.setPlayingHand(d.drawHand(h));
-//		System.out.println();
-//		h.print();
 
-		HandEvaluator e = new HandEvaluator();
-//		e.sortHand(h);
-//		System.out.println();
-//		e.print();
-//		System.out.println();
-//		h.print();
-//		System.out.println();
-		
-//		long c = 1;
-//		
-//		while(!(e.isJacksOrBetter(h))) {
-//			h.setPlayingHand(d.drawHand());
-//			c++;
-//		}
-//		h.print();
-		System.out.println();
-//		System.out.println(c);
-		
-//		System.out.println(e.evaluateHand(h));
-		
-		HandRank hr = new HandRank();
-		
 		boolean done = false;
 		while (!done) {
 			h.setPlayingHand(d.drawHand());
+			System.out.println("Credits: "+TheDealer.getCredits()+"   Current bet: "+TheDealer.getCurrentBet());
+			System.out.println();
 			h.print();
-//			System.out.println("Credits: "+TheDealer.getCredits()+"   Current bet: "+TheDealer.getCurrentBet());
 			System.out.println();
 			System.out.println("Select cards to hold (0-4) or 5 to skip: ");
 			BufferedReader inQ = new BufferedReader(new InputStreamReader(System.in));
@@ -71,11 +37,6 @@ public class Test {
 						h.getPlayingCard(p).setHold(true);
 					}
 				}
-//				String[] ar = sa.split(",");
-//				for (int i=0; i<ar.length; i++) {
-//					int p = Integer.parseInt(ar[i]);
-//					h.getPlayingCard(p).setHold(true);
-//				}
 			} catch (IOException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
@@ -85,7 +46,11 @@ public class Test {
 			System.out.println();
 			h.print();
 			System.out.println();
-			System.out.println(e.evaluateHand(h));
+			HandRank rank = TheDealer.evaluateGameHand(h);
+			System.out.println();
+			System.out.println(rank.getRankTitle() + " - you won: "+TheDealer.getCurrentWin()+" credits!");
+			System.out.println();
+			System.out.println("Credits: "+TheDealer.getCredits()+"   Current bet: "+TheDealer.getCurrentBet());
 			
 			System.out.println();
 			System.out.println("Deal again? y/n :");

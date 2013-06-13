@@ -1,11 +1,14 @@
 package game_engine;
 
+import game_engine.hand_ranks.HandRank;
+
 public class TheDealer {
 
 	private static CardInHand[] hand;
 	private static DeckOfCards deck;
 	private static long credits;
 	private static long currentBet;
+	private static long currentWin;
 	
 	private static TheDealer instance = new TheDealer();
 
@@ -34,12 +37,21 @@ public class TheDealer {
 	public static void setCurrentBet(long currentBet) {
 		TheDealer.currentBet = currentBet;
 	}
+	
+	public static long getCurrentWin() {
+		return currentWin;
+	}
+	
+	public static void setCurrentWin(long currentWin) {
+		TheDealer.currentWin = currentWin;
+	}
 
 	public static TheDealer getTheDealerInstance() {
 		return instance;
 	}
 	
 	public CardInHand[] drawHand() {
+		setCurrentWin(0);
 		if (credits<0) {
 			throw new RuntimeException("You don't have enough credits.");
 		}
@@ -51,8 +63,8 @@ public class TheDealer {
 			Card newCard = deck.drawNextCardFromDeck();
 			setGameHandCard(i, newCard);
 		}
-		deck.showDeck();
-		System.out.println("Credits: "+TheDealer.getCredits()+"   Current bet: "+TheDealer.getCurrentBet());
+//		deck.showDeck();
+//		System.out.println("Credits: "+TheDealer.getCredits()+"   Current bet: "+TheDealer.getCurrentBet());
 		System.out.println();
 		credits = credits - currentBet;
 		return hand;
@@ -65,6 +77,7 @@ public class TheDealer {
 //		if (credits<currentBet && credits>0) {
 //			currentBet = credits;
 //		}
+		setCurrentWin(0);
 		for (int i=0; i<5; i++) {
 			if (!playedHand.getPlayingCard(i).isHold()) {
 				Card newCard = deck.drawNextCardFromDeck();
@@ -72,6 +85,14 @@ public class TheDealer {
 			}
 		}
 		return hand;
+	}
+	
+	public static HandRank evaluateGameHand(GameHand h) {
+		HandEvaluator e = new HandEvaluator();
+		HandRank rank = e.evaluateHand(h);
+		setCurrentWin(rank.getWinRatio()*getCurrentBet());
+		setCredits(getCredits()+getCurrentWin());
+		return rank;
 	}
 	
 	private void setGameHandCard(int position, Card newCard) {

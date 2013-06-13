@@ -1,6 +1,8 @@
 package game_engine.hand_ranks;
 
-public class HandRank {
 
-	private int winRatio;
+public interface HandRank {
+
+	public long getWinRatio();
+	public String getRankTitle();
 }
