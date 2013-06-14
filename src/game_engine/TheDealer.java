@@ -14,7 +14,7 @@ public class TheDealer {
 
 	private TheDealer() {
 		deck = DeckOfCards.getShuffeledDeckInstance();
-		credits = 20;
+		credits = 5;
 		currentBet = 3;
 		hand = new CardInHand[5];
 		for (int i=0; i<hand.length; i++) {

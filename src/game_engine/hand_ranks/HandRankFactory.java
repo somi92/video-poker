@@ -41,4 +41,19 @@ public class HandRankFactory {
 		return null;
 		
 	}
+	
+	public static HandRank[] getAllHandRanks() {
+		HandRank[] allRanks = new HandRank[10];
+		allRanks[9] = new NoRank();
+		allRanks[8] = new JacksOrBetter();
+		allRanks[7] = new TwoPair();
+		allRanks[6] = new ThreeOfAKind();
+		allRanks[5] = new Straight();
+		allRanks[4] = new Flush();
+		allRanks[3] = new FullHouse();
+		allRanks[2] = new FourOfAKind();
+		allRanks[1] = new StraightFlush();
+		allRanks[0] = new RoyalFlush();
+		return allRanks;
+	}
 }

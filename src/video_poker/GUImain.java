@@ -34,6 +34,9 @@ import javax.swing.JToggleButton;
 import javax.swing.border.EtchedBorder;
 import java.awt.SystemColor;
 import javax.swing.ListSelectionModel;
+import javax.swing.JScrollPane;
+import javax.swing.border.BevelBorder;
+import java.awt.CardLayout;
 
 public class GUImain extends JFrame {
 
@@ -59,6 +62,12 @@ public class GUImain extends JFrame {
 	private JButton btnNewButton_5;
 	private JButton btnNewButton_6;
 	private JButton btnNewButton_7;
+	private JPanel panel_2;
+	private JButton btnNewButton_8;
+	private JButton btnNewButton_9;
+	private JButton btnNewButton_10;
+	private JButton btnNewButton_11;
+	private JButton btnNewButton_12;
 
 	/**
 	 * Launch the application.
@@ -104,56 +113,61 @@ public class GUImain extends JFrame {
 			gbl_centralPanel.rowWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
 			centralPanel.setLayout(gbl_centralPanel);
 			GridBagConstraints gbc_lblCard1 = new GridBagConstraints();
-			gbc_lblCard1.fill = GridBagConstraints.VERTICAL;
+			gbc_lblCard1.fill = GridBagConstraints.BOTH;
 			gbc_lblCard1.insets = new Insets(0, 0, 5, 5);
 			gbc_lblCard1.gridx = 0;
 			gbc_lblCard1.gridy = 0;
 			centralPanel.add(getLblCard1(), gbc_lblCard1);
 			GridBagConstraints gbc_lblCard2 = new GridBagConstraints();
-			gbc_lblCard2.fill = GridBagConstraints.VERTICAL;
+			gbc_lblCard2.fill = GridBagConstraints.BOTH;
 			gbc_lblCard2.insets = new Insets(0, 0, 5, 5);
 			gbc_lblCard2.gridx = 1;
 			gbc_lblCard2.gridy = 0;
 			centralPanel.add(getLblCard2(), gbc_lblCard2);
 			GridBagConstraints gbc_lblCard3 = new GridBagConstraints();
-			gbc_lblCard3.fill = GridBagConstraints.VERTICAL;
+			gbc_lblCard3.fill = GridBagConstraints.BOTH;
 			gbc_lblCard3.insets = new Insets(0, 0, 5, 5);
 			gbc_lblCard3.gridx = 2;
 			gbc_lblCard3.gridy = 0;
 			centralPanel.add(getLblCard3(), gbc_lblCard3);
 			GridBagConstraints gbc_lblCard4 = new GridBagConstraints();
-			gbc_lblCard4.fill = GridBagConstraints.VERTICAL;
+			gbc_lblCard4.fill = GridBagConstraints.BOTH;
 			gbc_lblCard4.insets = new Insets(0, 0, 5, 5);
 			gbc_lblCard4.gridx = 3;
 			gbc_lblCard4.gridy = 0;
 			centralPanel.add(getLblCard4(), gbc_lblCard4);
 			GridBagConstraints gbc_lblCard5 = new GridBagConstraints();
-			gbc_lblCard5.fill = GridBagConstraints.VERTICAL;
+			gbc_lblCard5.fill = GridBagConstraints.BOTH;
 			gbc_lblCard5.insets = new Insets(0, 0, 5, 0);
 			gbc_lblCard5.gridx = 4;
 			gbc_lblCard5.gridy = 0;
 			centralPanel.add(getLblCard5(), gbc_lblCard5);
 			GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+			gbc_btnNewButton.fill = GridBagConstraints.HORIZONTAL;
 			gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
 			gbc_btnNewButton.gridx = 0;
 			gbc_btnNewButton.gridy = 1;
 			centralPanel.add(getBtnNewButton(), gbc_btnNewButton);
 			GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
+			gbc_btnNewButton_2.fill = GridBagConstraints.HORIZONTAL;
 			gbc_btnNewButton_2.insets = new Insets(0, 0, 0, 5);
 			gbc_btnNewButton_2.gridx = 1;
 			gbc_btnNewButton_2.gridy = 1;
 			centralPanel.add(getBtnNewButton_2(), gbc_btnNewButton_2);
 			GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
+			gbc_btnNewButton_1.fill = GridBagConstraints.HORIZONTAL;
 			gbc_btnNewButton_1.insets = new Insets(0, 0, 0, 5);
 			gbc_btnNewButton_1.gridx = 2;
 			gbc_btnNewButton_1.gridy = 1;
 			centralPanel.add(getBtnNewButton_1(), gbc_btnNewButton_1);
 			GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
+			gbc_btnNewButton_3.fill = GridBagConstraints.HORIZONTAL;
 			gbc_btnNewButton_3.insets = new Insets(0, 0, 0, 5);
 			gbc_btnNewButton_3.gridx = 3;
 			gbc_btnNewButton_3.gridy = 1;
 			centralPanel.add(getBtnNewButton_3(), gbc_btnNewButton_3);
 			GridBagConstraints gbc_btnNewButton_4 = new GridBagConstraints();
+			gbc_btnNewButton_4.fill = GridBagConstraints.HORIZONTAL;
 			gbc_btnNewButton_4.gridx = 4;
 			gbc_btnNewButton_4.gridy = 1;
 			centralPanel.add(getBtnNewButton_4(), gbc_btnNewButton_4);
@@ -233,54 +247,50 @@ public class GUImain extends JFrame {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
 			panel_1.setLayout(new BorderLayout(0, 30));
-			panel_1.add(getTable());
+			panel_1.add(getTable(), BorderLayout.CENTER);
+			panel_1.add(getPanel_2(), BorderLayout.SOUTH);
 		}
 		return panel_1;
 	}
 	private JTable getTable() {
 		if (table == null) {
 			table = new JTable();
+			table.setEnabled(false);
+			table.setRowSelectionAllowed(false);
+			table.setShowHorizontalLines(false);
 			table.setGridColor(Color.RED);
 			table.setSelectionBackground(Color.RED);
 			table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			table.setForeground(Color.BLACK);
-			table.setColumnSelectionAllowed(true);
-			table.setShowHorizontalLines(false);
-			table.setBackground(Color.LIGHT_GRAY);
+			table.setBackground(Color.WHITE);
 			table.setRowHeight(20);
-			table.setRowSelectionAllowed(false);
 			table.setFont(new Font("Dialog", Font.PLAIN, 20));
-			table.setModel(new DefaultTableModel(
-				new Object[][] {
-					{"", null, null, null, null, null},
-					{"  ROYAL FLUSH", new Integer(250), new Integer(500), new Integer(750), new Integer(1000), new Integer(4000)},
-					{"  STRAIGHT FLUSH", new Integer(50), new Integer(100), new Integer(150), new Integer(200), new Integer(250)},
-					{"  FOUR OF A KIND", new Integer(25), new Integer(50), new Integer(75), new Integer(100), new Integer(125)},
-					{"  FULL HOUSE", new Integer(9), new Integer(18), new Integer(27), new Integer(36), new Integer(45)},
-					{"  FLUSH", new Integer(6), new Integer(12), new Integer(18), new Integer(24), new Integer(30)},
-					{"  STRAIGHT", new Integer(4), new Integer(8), new Integer(12), new Integer(16), new Integer(20)},
-					{"  THREE OF A KIND", new Integer(3), new Integer(6), new Integer(9), new Integer(12), new Integer(15)},
-					{"  TWO PAIR", new Integer(2), new Integer(4), new Integer(6), new Integer(8), new Integer(10)},
-					{"JACKS OR BETTER", new Integer(1), new Integer(2), new Integer(3), new Integer(4), new Integer(5)},
-				},
-				new String[] {
-					"Combination", "New column", "New column", "New column", "New column", "New column"
-				}
-			) {
-				Class[] columnTypes = new Class[] {
-					String.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class
-				};
-				public Class getColumnClass(int columnIndex) {
-					return columnTypes[columnIndex];
-				}
-				boolean[] columnEditables = new boolean[] {
-					false, false, false, false, false, false
-				};
-				public boolean isCellEditable(int row, int column) {
-					return columnEditables[column];
-				}
-			});
-			table.getColumnModel().getColumn(0).setPreferredWidth(200);
+			table.setModel(new RankTableModel());
+//			table.setModel(new DefaultTableModel(
+//				new Object[][] {
+//					{"", null, null, null, null, null},
+//					{"  ROYAL FLUSH", new Integer(250), new Integer(500), new Integer(750), new Integer(1000), new Integer(4000)},
+//					{"  STRAIGHT FLUSH", new Integer(50), new Integer(100), new Integer(150), new Integer(200), new Integer(250)},
+//					{"  FOUR OF A KIND", new Integer(25), new Integer(50), new Integer(75), new Integer(100), new Integer(125)},
+//					{"  FULL HOUSE", new Integer(9), new Integer(18), new Integer(27), new Integer(36), new Integer(45)},
+//					{"  FLUSH", new Integer(6), new Integer(12), new Integer(18), new Integer(24), new Integer(30)},
+//					{"  STRAIGHT", new Integer(4), new Integer(8), new Integer(12), new Integer(16), new Integer(20)},
+//					{"  THREE OF A KIND", new Integer(3), new Integer(6), new Integer(9), new Integer(12), new Integer(15)},
+//					{"  TWO PAIR", new Integer(2), new Integer(4), new Integer(6), new Integer(8), new Integer(10)},
+//					{"JACKS OR BETTER", new Integer(1), new Integer(2), new Integer(3), new Integer(4), new Integer(5)},
+//				},
+//				new String[] {
+//					"Rank", "Bet 1", "Bet 2", "Bet 3", "Bet 4", "Bet 5"
+//				}
+//			) {
+//				Class[] columnTypes = new Class[] {
+//					String.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class
+//				};
+//				public Class getColumnClass(int columnIndex) {
+//					return columnTypes[columnIndex];
+//				}
+//			});
+//			table.getColumnModel().getColumn(0).setPreferredWidth(200);
 		}
 		return table;
 	}
@@ -349,5 +359,76 @@ public class GUImain extends JFrame {
 			btnNewButton_7 = new JButton("New button");
 		}
 		return btnNewButton_7;
+	}
+	private JPanel getPanel_2() {
+		if (panel_2 == null) {
+			panel_2 = new JPanel();
+			GridBagLayout gbl_panel_2 = new GridBagLayout();
+			gbl_panel_2.columnWidths = new int[]{216, 200, 0, 200, 200, 200, 223, 0};
+			gbl_panel_2.rowHeights = new int[]{0, 0};
+			gbl_panel_2.columnWeights = new double[]{1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+			gbl_panel_2.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+			panel_2.setLayout(gbl_panel_2);
+			GridBagConstraints gbc_btnNewButton_8 = new GridBagConstraints();
+			gbc_btnNewButton_8.fill = GridBagConstraints.HORIZONTAL;
+			gbc_btnNewButton_8.insets = new Insets(0, 0, 0, 5);
+			gbc_btnNewButton_8.gridx = 1;
+			gbc_btnNewButton_8.gridy = 0;
+			panel_2.add(getBtnNewButton_8(), gbc_btnNewButton_8);
+			GridBagConstraints gbc_btnNewButton_9 = new GridBagConstraints();
+			gbc_btnNewButton_9.fill = GridBagConstraints.HORIZONTAL;
+			gbc_btnNewButton_9.insets = new Insets(0, 0, 0, 5);
+			gbc_btnNewButton_9.gridx = 3;
+			gbc_btnNewButton_9.gridy = 0;
+			panel_2.add(getBtnNewButton_9(), gbc_btnNewButton_9);
+			GridBagConstraints gbc_btnNewButton_10 = new GridBagConstraints();
+			gbc_btnNewButton_10.fill = GridBagConstraints.HORIZONTAL;
+			gbc_btnNewButton_10.insets = new Insets(0, 0, 0, 5);
+			gbc_btnNewButton_10.gridx = 4;
+			gbc_btnNewButton_10.gridy = 0;
+			panel_2.add(getBtnNewButton_10(), gbc_btnNewButton_10);
+			GridBagConstraints gbc_btnNewButton_11 = new GridBagConstraints();
+			gbc_btnNewButton_11.fill = GridBagConstraints.HORIZONTAL;
+			gbc_btnNewButton_11.insets = new Insets(0, 0, 0, 5);
+			gbc_btnNewButton_11.gridx = 5;
+			gbc_btnNewButton_11.gridy = 0;
+			panel_2.add(getBtnNewButton_11(), gbc_btnNewButton_11);
+			GridBagConstraints gbc_btnNewButton_12 = new GridBagConstraints();
+			gbc_btnNewButton_12.fill = GridBagConstraints.HORIZONTAL;
+			gbc_btnNewButton_12.gridx = 6;
+			gbc_btnNewButton_12.gridy = 0;
+			panel_2.add(getBtnNewButton_12(), gbc_btnNewButton_12);
+		}
+		return panel_2;
+	}
+	private JButton getBtnNewButton_8() {
+		if (btnNewButton_8 == null) {
+			btnNewButton_8 = new JButton("New button");
+		}
+		return btnNewButton_8;
+	}
+	private JButton getBtnNewButton_9() {
+		if (btnNewButton_9 == null) {
+			btnNewButton_9 = new JButton("New button");
+		}
+		return btnNewButton_9;
+	}
+	private JButton getBtnNewButton_10() {
+		if (btnNewButton_10 == null) {
+			btnNewButton_10 = new JButton("New button");
+		}
+		return btnNewButton_10;
+	}
+	private JButton getBtnNewButton_11() {
+		if (btnNewButton_11 == null) {
+			btnNewButton_11 = new JButton("New button");
+		}
+		return btnNewButton_11;
+	}
+	private JButton getBtnNewButton_12() {
+		if (btnNewButton_12 == null) {
+			btnNewButton_12 = new JButton("New button");
+		}
+		return btnNewButton_12;
 	}
 }
