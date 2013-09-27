@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 
+import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -37,6 +38,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.JScrollPane;
 import javax.swing.border.BevelBorder;
 import java.awt.CardLayout;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 public class GUImain extends JFrame {
 
@@ -63,11 +66,13 @@ public class GUImain extends JFrame {
 	private JButton btnNewButton_6;
 	private JButton btnNewButton_7;
 	private JPanel panel_2;
-	private JButton btnNewButton_8;
-	private JButton btnNewButton_9;
-	private JButton btnNewButton_10;
-	private JButton btnNewButton_11;
-	private JButton btnNewButton_12;
+	private JToggleButton btnNewButton_8;
+	private JToggleButton btnNewButton_9;
+	private JToggleButton btnNewButton_10;
+	private JToggleButton btnNewButton_11;
+	private JToggleButton btnNewButton_12;
+	private JMenuBar menuBar;
+	private JMenuItem mntmFile;
 
 	/**
 	 * Launch the application.
@@ -92,6 +97,7 @@ public class GUImain extends JFrame {
 		setTitle("Video Poker");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1258, 848);
+		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -99,6 +105,12 @@ public class GUImain extends JFrame {
 		contentPane.add(getCentralPanel(), BorderLayout.CENTER);
 		contentPane.add(getPanel_1(), BorderLayout.NORTH);
 		contentPane.add(getPanel(), BorderLayout.SOUTH);
+		ButtonGroup group = new ButtonGroup();
+		group.add(btnNewButton_8);
+		group.add(btnNewButton_9);
+		group.add(btnNewButton_10);
+		group.add(btnNewButton_11);
+		group.add(btnNewButton_12);
 	}
 
 	private JPanel getCentralPanel() {
@@ -248,7 +260,7 @@ public class GUImain extends JFrame {
 			panel_1 = new JPanel();
 			panel_1.setLayout(new BorderLayout(0, 30));
 			panel_1.add(getTable(), BorderLayout.CENTER);
-			panel_1.add(getPanel_2(), BorderLayout.SOUTH);
+			panel_1.add(getPanel_2(), BorderLayout.NORTH);
 		}
 		return panel_1;
 	}
@@ -401,34 +413,47 @@ public class GUImain extends JFrame {
 		}
 		return panel_2;
 	}
-	private JButton getBtnNewButton_8() {
+	private JToggleButton getBtnNewButton_8() {
 		if (btnNewButton_8 == null) {
-			btnNewButton_8 = new JButton("New button");
+			btnNewButton_8 = new JToggleButton("New button");
 		}
 		return btnNewButton_8;
 	}
-	private JButton getBtnNewButton_9() {
+	private JToggleButton getBtnNewButton_9() {
 		if (btnNewButton_9 == null) {
-			btnNewButton_9 = new JButton("New button");
+			btnNewButton_9 = new JToggleButton("New button");
 		}
 		return btnNewButton_9;
 	}
-	private JButton getBtnNewButton_10() {
+	private JToggleButton getBtnNewButton_10() {
 		if (btnNewButton_10 == null) {
-			btnNewButton_10 = new JButton("New button");
+			btnNewButton_10 = new JToggleButton("New button");
 		}
 		return btnNewButton_10;
 	}
-	private JButton getBtnNewButton_11() {
+	private JToggleButton getBtnNewButton_11() {
 		if (btnNewButton_11 == null) {
-			btnNewButton_11 = new JButton("New button");
+			btnNewButton_11 = new JToggleButton("New button");
 		}
 		return btnNewButton_11;
 	}
-	private JButton getBtnNewButton_12() {
+	private JToggleButton getBtnNewButton_12() {
 		if (btnNewButton_12 == null) {
-			btnNewButton_12 = new JButton("New button");
+			btnNewButton_12 = new JToggleButton("New button");
 		}
 		return btnNewButton_12;
+	}
+	private JMenuBar getMenuBar_1() {
+		if (menuBar == null) {
+			menuBar = new JMenuBar();
+			menuBar.add(getMntmFile());
+		}
+		return menuBar;
+	}
+	private JMenuItem getMntmFile() {
+		if (mntmFile == null) {
+			mntmFile = new JMenuItem("File");
+		}
+		return mntmFile;
 	}
 }
